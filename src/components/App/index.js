@@ -11,23 +11,26 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 
-const App = () => {
-    return(
-        <Router>
-            <Navigation/>
-            <hr/>
-            <Switch>
-                <Route path={ROUTES.SIGN_UP} component={SingUpPage} />
-                <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-                <Route path={ROUTES.HOME} component={HomePage} />
-                <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-                <Route path={ROUTES.ADMIN} component={AdminPage} />
-                <Route path={ROUTES.LANDING} component={LandingPage}/>
-            </Switch>
+import { withAuthentication } from "../Session";
 
-        </Router>
+const App = () => {
+
+    return(
+            <Router>
+                <Navigation/>
+                <hr/>
+                <Switch>
+                    <Route path={ROUTES.SIGN_UP} component={SingUpPage} />
+                    <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                    <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+                    <Route path={ROUTES.HOME} component={HomePage} />
+                    <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+                    <Route path={ROUTES.ADMIN} component={AdminPage} />
+                    <Route path={ROUTES.LANDING} component={LandingPage}/>
+                </Switch>
+
+            </Router>
     )
 };
 
-export default App;
+export default withAuthentication(App);

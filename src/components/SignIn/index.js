@@ -28,7 +28,6 @@ const SignInformBase = ({ firebase }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if (isInvalid) {
             return
         }
