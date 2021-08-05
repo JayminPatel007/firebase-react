@@ -3,12 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 
 import * as ROUTES from '../../constants/routes';
 import FirebaseContext, { withFirebase } from "../Firebase";
+import {SignInLink} from '../SignIn'
 
 const SignUp = () => {
     return (
         <div>
             <h1>SignUp</h1>
             <SignUpForm/>
+            <SignInLink />
         </div>
     )
 };
@@ -29,8 +31,6 @@ const SignUpFormBase = ({firebase}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('handle submit is called');
-        console.log(isInvalid);
         if (isInvalid) {
             return;
         }
