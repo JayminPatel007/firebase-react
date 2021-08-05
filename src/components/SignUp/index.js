@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, useHistory } from "react-router-dom";
 
 import * as ROUTES from '../../constants/routes';
-import FirebaseContext from "../Firebase/context";
+import FirebaseContext, { withFirebase } from "../Firebase";
 
 const SignUp = () => {
     return (
@@ -21,10 +21,9 @@ const INITIAL_STATE = {
     error: null,
 };
 
-const SignUpForm = () => {
+const SignUpFormBase = ({firebase}) => {
     const [formData, setFormData] = React.useState(INITIAL_STATE);
     const history = useHistory();
-    const firebase = React.useContext(FirebaseContext);
 
     const {username, email, passwordOne, passwordTwo, error} = formData;
 
@@ -76,7 +75,7 @@ const SignUpForm = () => {
     )
 };
 
-// const SignUpForm = withFirebase(SignUpFormBase);
+const SignUpForm = withFirebase(SignUpFormBase);
 
 const SignUpLink = () => (
     <p>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 import * as ROUTES from '../../constants/routes'
 import Navigation from '../Navigation'
@@ -16,13 +16,15 @@ const App = () => {
         <Router>
             <Navigation/>
             <hr/>
-            <Route exect path={ROUTES.LANDING} component={LandingPage}/>
-            <Route path={ROUTES.SIGN_UP} component={SingUpPage} />
-            <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-            <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-            <Route path={ROUTES.HOME} component={HomePage} />
-            <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-            <Route path={ROUTES.ADMIN} component={AdminPage} />
+            <Switch>
+                <Route path={ROUTES.SIGN_UP} component={SingUpPage} />
+                <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
+                <Route path={ROUTES.HOME} component={HomePage} />
+                <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+                <Route path={ROUTES.ADMIN} component={AdminPage} />
+                <Route path={ROUTES.LANDING} component={LandingPage}/>
+            </Switch>
 
         </Router>
     )
