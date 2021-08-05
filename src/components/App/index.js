@@ -15,7 +15,6 @@ const App = () => {
     return(
         <Router>
             <Navigation/>
-
             <hr/>
             <Route exect path={ROUTES.LANDING} component={LandingPage}/>
             <Route path={ROUTES.SIGN_UP} component={SingUpPage} />
