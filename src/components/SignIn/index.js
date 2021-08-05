@@ -38,6 +38,12 @@ const SignInformBase = ({ firebase }) => {
                 setFormData(INITIAL_STATE);
                 history.push(ROUTES.HOME);
             })
+            .catch(error => {
+                setFormData(prevState => ({
+                    ...prevState,
+                    error
+                }))
+            })
 
     };
 
