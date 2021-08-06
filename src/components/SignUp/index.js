@@ -35,7 +35,14 @@ const SignUpFormBase = ({firebase}) => {
             return;
         }
         firebase.createUserWithEmailAndPassword(email, passwordOne)
-            .then((authUser) => {
+            .then(authUser => {
+                return firebase.user(authUser.user.uid)
+                    .set({
+                        username,
+                        email
+                    });
+            })
+            .then(() => {
                 console.log('success');
                 setFormData(INITIAL_STATE);
                 history.push(ROUTES.HOME);
