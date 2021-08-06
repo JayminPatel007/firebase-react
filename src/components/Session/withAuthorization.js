@@ -6,8 +6,8 @@ import {withFirebase} from "../Firebase";
 import AuthUserContext from "./context";
 
 const withAuthorization = condition => Component => {
-    const authUser = React.useContext(AuthUserContext);
     const WithAuthorization = (props) => {
+        const authUser = React.useContext(AuthUserContext);
         const history = useHistory();
         React.useEffect(() => {
             console.log('withAuthorization is called');
