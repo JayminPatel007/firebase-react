@@ -45,6 +45,14 @@ const Admin = ({firebase}) => {
         firebase.users().on('value', snapshot => {
             const usersObject = snapshot.val();
 
+            if (!usersObject) {
+                dispatch({
+                    type: 'USER_FETCH_SUCCESS',
+                    payload: [],
+                });
+                return;
+            }
+
             const usersList = Object.keys(usersObject).map(key => ({
                 ...usersObject[key],
                 uid: key,
@@ -64,7 +72,7 @@ const Admin = ({firebase}) => {
 
             {loading && <div>Loading</div>}
 
-            <UsersList users={users} />
+            {users && <UsersList users={users} />}
         </div>
     )
 };
